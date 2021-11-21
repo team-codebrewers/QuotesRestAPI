@@ -24,6 +24,14 @@ public class Quote {
                 ", author='" + author + '\'' +
                 '}';
     }
+
+    public String getQuote() {
+        return quote;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
 }
 
 // Quote{quote='TEXT', author='TEXT'}
