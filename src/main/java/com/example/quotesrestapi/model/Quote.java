@@ -29,6 +29,7 @@ public class Quote {
         return quote;
     }
 
+
     public String getAuthor() {
         return author;
     }
