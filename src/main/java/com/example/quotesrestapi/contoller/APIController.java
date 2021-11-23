@@ -4,17 +4,23 @@ import com.example.quotesrestapi.model.Quote;
 import com.example.quotesrestapi.quoteservice.QuoteService;
 import com.example.quotesrestapi.quoteservice.QuoteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.http.HttpStatus;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 public class APIController {
 
-    @Autowired
+//    @Autowired
     private QuoteService quoteService;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @GetMapping("/")
     public String hello(){
@@ -24,7 +30,12 @@ public class APIController {
 
     @GetMapping("/test")
     public HttpStatus test(@RequestParam(name = "id", defaultValue = "10") String id){
-        System.out.println("The ID is : "+ id);
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS test(name TEXT)");
+        jdbcTemplate.execute("INSERT INTO test VALUES ('Stella')");
+        List<String> names = jdbcTemplate.query("SELECT * FROM name", (resultSet, rowNum) ->new String(resultSet.getString("name")));
+        for(String s : names){
+            System.out.println(s);
+        }
         return HttpStatus.OK;
     }
 
