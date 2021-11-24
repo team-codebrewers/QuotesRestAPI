@@ -3,6 +3,7 @@ package com.example.quotesrestapi.model;
 import java.util.List;
 
 public class Quote {
+    // TODO: Add getters ,setters & override toString()
     public String quote;
     public String author;
     public List<String> tags;
