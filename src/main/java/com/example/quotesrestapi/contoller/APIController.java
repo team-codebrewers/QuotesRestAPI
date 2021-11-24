@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/test")
 public class APIController {
 
     @Autowired
@@ -25,15 +25,11 @@ public class APIController {
         return "QuotesAPIServer";
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test0")
     public HttpStatus test(@RequestParam(name = "id", defaultValue = "10") String id){
         System.out.println("ID : " + id);
         return HttpStatus.OK;
     }
 
-    @GetMapping("/test/getquotes")
-    public List<Quote> getQuotes(){
-        return this.quoteService.getQuotes();
-    }
 
 }

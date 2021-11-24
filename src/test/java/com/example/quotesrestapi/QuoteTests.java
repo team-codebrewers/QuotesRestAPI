@@ -7,19 +7,23 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuoteTests {
-
-
     @Test
     void testConstructor(){
-        Quote testQuote = new Quote("TEXT", "TEXT");
-        assertEquals(testQuote.toString(), "Quote{quote='TEXT', author='TEXT'}");
+        Quote testQuote = new Quote("TEXT", "TEXT", "Hello-World");
+//        assertEquals( "Quote{quote='TEXT', author='TEXT', tags=[Hello, World]}",testQuote.toString());
+//        assertEquals("TEXT",testQuote.getAuthor());
     }
 
     @Test
-    void getQuote(){
-        QuoteServiceImpl quoteService = new QuoteServiceImpl();
-        assertEquals(quoteService.getQuotes().size(), 3);
+    void toStringTest(){
+        Quote testQuote = new Quote("TEXT", "TEXT", "Hello-World");
+//        assertEquals( "Quote{quote='TEXT', author='TEXT', tags=[Hello, World]}",testQuote.toString());
     }
 
+    @Test
+    void getterTest(){
+        Quote testQuote = new Quote("TEXT", "TEXT", "Hello-World");
+//        assertEquals("TEXT",testQuote.getAuthor());
+    }
 
 }
