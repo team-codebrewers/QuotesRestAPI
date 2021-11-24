@@ -1,38 +1,23 @@
 package com.example.quotesrestapi.model;
 
+import java.util.List;
+
 public class Quote {
     public String quote;
     public String author;
+    public List<String> tags;
     public Quote(){}
     public Quote(String quote, String author){
         this.quote = quote;
         this.author = author;
     }
 
-    public void setQuote(String quote) {
+    public Quote(String quote, String author, String tags){
         this.quote = quote;
-    }
-
-    public void setAuthor(String author) {
         this.author = author;
+        this.tags = List.of(tags.split("-"));
     }
 
-    @Override
-    public String toString() {
-        return "Quote{" +
-                "quote='" + quote + '\'' +
-                ", author='" + author + '\'' +
-                '}';
-    }
-
-    public String getQuote() {
-        return quote;
-    }
-
-
-    public String getAuthor() {
-        return author;
-    }
 }
 
 // Quote{quote='TEXT', author='TEXT'}
