@@ -17,7 +17,7 @@ public class DatabaseTests {
 
     @Test
     void queryCheck(){
-        List<Quote> quoteList = db.getQueryResponse("SELECT * FROM quotes_dataset WHERE author='Marilyn Monroe'");
+        List<Quote> quoteList = db.getQuoteQuery("SELECT * FROM quotes_dataset WHERE author='Marilyn Monroe'");
         assertEquals(78, quoteList.size());
     }
 }
