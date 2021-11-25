@@ -15,9 +15,6 @@ import java.util.List;
 @RequestMapping("/test")
 public class APIController {
 
-    @Autowired
-    private QuoteService quoteService;
-
 
     @GetMapping("/")
     public String hello(){
@@ -25,11 +22,10 @@ public class APIController {
         return "QuotesAPIServer";
     }
 
-    @GetMapping("/test0")
+    @GetMapping("/test")
     public HttpStatus test(@RequestParam(name = "id", defaultValue = "10") String id){
         System.out.println("ID : " + id);
         return HttpStatus.OK;
     }
-
 
 }

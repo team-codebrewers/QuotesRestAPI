@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuoteTests {
+    /*
+    These tests are performed on the Quote Class
+     */
+
     @Test
     void testConstructor(){
         Quote testQuote = new Quote("TEXT", "TEXT", "Hello-World");
