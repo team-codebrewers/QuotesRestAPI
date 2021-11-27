@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/user")
 public class AuthController {
+
     @PostMapping("/issue")
     public User issueToken(){
         return null;
