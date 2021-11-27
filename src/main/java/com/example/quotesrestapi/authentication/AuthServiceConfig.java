@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-@Component
+//@Component
 public class AuthServiceConfig extends WebMvcConfigurerAdapter{
     @Autowired
     AuthServiceHandler authServiceHandler;
