@@ -13,8 +13,6 @@ public class AuthController {
     }
 
     @DeleteMapping("/remove")
-    public void removeToken(){
-
-    }
+    public void removeToken(){}
 
 }
