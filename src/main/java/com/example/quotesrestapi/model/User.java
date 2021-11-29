@@ -2,19 +2,20 @@ package com.example.quotesrestapi.model;
 
 import com.example.quotesrestapi.services.DatabaseService;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+@Service
 public class User {
     public static String free = "free";
     public static String paid = "paid";
     DatabaseService db = new DatabaseService();
-    String email;
-    String token;
-    String privilege;
+    public  String email;
+    public  String token;
+    public String privilege;
     int calls;
-
+    public User(){}
     public User(String email, String token, String privilege, int calls) {
         this.email = email;
         this.token = token;
