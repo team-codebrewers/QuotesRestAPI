@@ -3,17 +3,21 @@ package com.example.quotesrestapi.model;
 import java.util.List;
 
 public class Quote {
-    // TODO: Add getters ,setters & override toString()
+    //fields
     public String quote;
     public String author;
     public List<String> tags;
-    public Quote(){}
-    public Quote(String quote, String author){
+
+    public Quote() {
+    }
+
+    // parameterised constructors
+    public Quote(String quote, String author) {
         this.quote = quote;
         this.author = author;
     }
 
-    public Quote(String quote, String author, String tags){
+    public Quote(String quote, String author, String tags) {
         this.quote = quote;
         this.author = author;
         this.tags = List.of(tags.split("-"));
@@ -52,5 +56,3 @@ public class Quote {
                 '}';
     }
 }
-
-// Quote{quote='TEXT', author='TEXT'}
