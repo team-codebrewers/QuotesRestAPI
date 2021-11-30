@@ -22,7 +22,7 @@ public class UserClassTest {
     @Test
     void superUserTest(){
         SuperUser superUser = new SuperUser("super123");
-        User authUser = superUser.registerUser("peter1@gmail.com", User.free);
-        System.out.println(authUser.toString());
+//        User authUser = superUser.registerUser("peter1@gmail.com", User.free);
+//        System.out.println(authUser.toString());
     }
 }

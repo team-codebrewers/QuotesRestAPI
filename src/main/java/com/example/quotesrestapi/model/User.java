@@ -15,7 +15,7 @@ public class User {
     public  String token;
     public String privilege;
     int calls;
-    public User(){}
+    User(){}
     public User(String email, String token, String privilege, int calls) {
         this.email = email;
         this.token = token;

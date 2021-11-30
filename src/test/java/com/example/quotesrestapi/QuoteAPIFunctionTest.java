@@ -8,7 +8,7 @@ public class QuoteAPIFunctionTest {
 
     @Test
     void hello(){
-        assertEquals(4, 2+3);
+        assertEquals(4, 2+2);
     }
 
 }
