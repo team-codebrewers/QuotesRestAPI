@@ -9,22 +9,31 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class QuoteAPIFunctionTest {
-
     @Test
-    void hello(){
-        assertEquals(4, 2+2);
-    }
-    @Test
-    void code_tester() {
-        QuoteAPIController obj=new QuoteAPIController();
-        List<Quote> my_quote_list=obj.getRandomQuote(2);
-        System.out.println(my_quote_list.get(0).toString());
-    }
-    @Test
-    void code_tester_2(){
-       QuoteAPIController obj=new QuoteAPIController();
-       List<Quote> quote_list=obj.searchKeyword("happiness", 20);
-        System.out.println(quote_list.get(0).toString());
+    void testRandomQuote(){
+        List<Quote> quoteList = new QuoteAPIController().getRandomQuote(100);
+        quoteList.forEach((q) -> System.out.println(q.toString()));
+        assertEquals(50, quoteList.size());
     }
 
+    @Test
+    void testSearchKeyWord(){
+        List<Quote> quoteList = new QuoteAPIController().searchKeyword("love", 10);
+        quoteList.forEach((q) -> System.out.println(q.toString()));
+        assertEquals(10, quoteList.size());
+    }
+
+    @Test
+    void testAuthorQuote(){
+        List<Quote> quoteList = new QuoteAPIController().getQuotesFromAuthor("Steve-jobs", 10);
+        quoteList.forEach((q) -> System.out.println(q.toString()));
+        assertEquals(10, quoteList.size());
+    }
+
+    @Test
+    void testTagQuote(){
+        List<Quote> quoteList = new QuoteAPIController().getQuotesByTag("happiness", 10);
+        quoteList.forEach((q) -> System.out.println(q.toString()));
+        assertEquals(10, quoteList.size());
+    }
 }
