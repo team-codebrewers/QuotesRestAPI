@@ -20,7 +20,7 @@ public class Quote {
     public Quote(String quote, String author, String tags) {
         this.quote = quote;
         this.author = author;
-        this.tags = List.of(tags.split("-"));
+        this.tags = List.of(tags.split("[-,]"));
     }
 
     public String getQuote() {

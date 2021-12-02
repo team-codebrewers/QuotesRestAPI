@@ -39,7 +39,7 @@ public class DatabaseService {
             ResultSet rs = stmt.executeQuery(query); // querying
             while (rs.next()){
                 // adding results to an array
-                rev.add(new Quote(rs.getString("quote"), rs.getString("author")));
+                rev.add(new Quote(rs.getString("quote"), rs.getString("author"),rs.getString("tags")));
             }
             return rev;
         }catch (SQLException e){

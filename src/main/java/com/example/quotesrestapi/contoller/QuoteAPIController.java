@@ -80,7 +80,9 @@ public class QuoteAPIController {
 
     @GetMapping("/author/{authorName}")
     public List<Quote> getQuotesFromAuthor(@PathVariable String authorName,@RequestParam(name = "count", defaultValue = "10")int count){
-
+        List<String> authorNameList = List.of(authorName.split("-"));
+        authorName = String.join(" ", authorNameList);
+        System.out.println(authorName);
         String query = "SELECT * FROM quotes_dataset WHERE author LIKE '%"+ authorName+"%'";
         if(count <= 0) count = 1;
         else if(count > 50) count = 50;
@@ -113,8 +115,7 @@ public class QuoteAPIController {
 
     @GetMapping("/tag/{tag}")
     public List<Quote> getQuotesByTag(@PathVariable String tag,@RequestParam(name = "count", defaultValue = "10")int count){
-
-        String query = "SELECT * FROM quotes_dataset WHERE tag LIKE '%"+ tag+"%'";
+        String query = "SELECT * FROM quotes_dataset WHERE tags LIKE '%"+ tag+"%'";
         if(count <= 0) count = 1;
         else if(count > 50) count = 50;
         try{

@@ -9,7 +9,9 @@ import java.sql.SQLException;
 public class SuperUser extends User{
 
     public SuperUser(String token) {
+        // creating a user object
         super(token);
+        // checking if given token has super user privilege
         if(!this.privilege.equals("super")){
             throw new InvalidDataAccessApiUsageException("Invalid Token");
         }
