@@ -7,5 +7,5 @@ import java.util.List;
 
 @Service
 public interface QuoteService {
-    List<Quote> getQuotes();
+    List<Quote> getQuotes(String query, int count);
 }
