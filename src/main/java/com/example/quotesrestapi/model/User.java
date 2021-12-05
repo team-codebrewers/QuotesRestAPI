@@ -1,5 +1,6 @@
 package com.example.quotesrestapi.model;
 
+import com.example.quotesrestapi.exceptions.UserClassExceptions;
 import com.example.quotesrestapi.services.DatabaseService;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,6 @@ import java.sql.SQLException;
 public class User {
     public static String free = "free";
     public static String paid = "paid";
-    DatabaseService db = new DatabaseService();
     public  String email;
     public  String token;
     public String privilege;
@@ -24,9 +24,8 @@ public class User {
     }
 
     public User(String token){
-        DatabaseService db = new DatabaseService();
         String query = "SELECT * FROM users WHERE token='" + token + "'";
-
+        DatabaseService db = new DatabaseService();
         // trying to retrieve data
         try {
             ResultSet rs = db.getQueryResultSet(query);
@@ -37,15 +36,15 @@ public class User {
                 this.calls = rs.getInt("calls");
 
             }
-            db.closeConnection();
         } catch (SQLException throwable) {
             throwable.printStackTrace();
         }
 
+        db.closeConnection();
 
         // if we got null values of data then we will throw exception
         if(this.email == null){
-            throw new InvalidDataAccessApiUsageException("Invalid Token");
+            new UserClassExceptions("Invalid User");
         }
     }
 
@@ -68,15 +67,16 @@ public class User {
     // updating call count
     public void updateCalls(){
         if(this.isCallValid()){
-            DatabaseService db = new DatabaseService();
             String query = "UPDATE users SET calls=" + String.valueOf(this.calls + 1) + " WHERE email='" + this.email + "'";
+            DatabaseService db = new DatabaseService();
             try {
+
                 db.executeUpdateQuery(query);
+                db.closeConnection();
                 this.calls++;
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             db.closeConnection();
         }
 
@@ -85,8 +85,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "db=" + db +
-                ", email='" + email + '\'' +
+                "email='" + email + '\'' +
                 ", token='" + token + '\'' +
                 ", privilege='" + privilege + '\'' +
                 ", calls=" + calls +

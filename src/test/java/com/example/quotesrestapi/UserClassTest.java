@@ -1,5 +1,6 @@
 package com.example.quotesrestapi;
 
+import com.example.quotesrestapi.contoller.AuthController;
 import com.example.quotesrestapi.model.SuperUser;
 import com.example.quotesrestapi.model.User;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,8 @@ public class UserClassTest {
     }
 
     @Test
-    void superUserTest(){
-        SuperUser superUser = new SuperUser("super123");
-//        User authUser = superUser.registerUser("peter1@gmail.com", User.free);
-//        System.out.println(authUser.toString());
+    void registrationTest(){
+        AuthController authController = new AuthController();
+//        System.out.println(authController.authenticateUser("super123", "abhinavemail110", "paid").toString());
     }
 }

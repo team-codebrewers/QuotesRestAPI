@@ -62,9 +62,6 @@ public class DatabaseService {
     }
 
     public void executeUpdateQuery(String query){
-        if(!this.connected){ // if not connected to DB then returns
-            return;
-        }
         try{
             Statement stmt = this.connection.createStatement(); // creating statement
             stmt.executeUpdate(query); // querying
